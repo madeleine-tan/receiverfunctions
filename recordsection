@@ -1,0 +1,51 @@
+#---- plots a record section as a function of backazimuth ----
+
+import numpy as np
+import matplotlib.pyplot as plt
+from obspy import read, Stream
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
+from matplotlib import rcParams
+rcParams['figure.dpi'] = 150
+
+#---- read in files ----
+rf = read('TA.????.100.2.recf.sac')
+n=len(rf)
+print('n=', n)
+
+input("Press Enter to continue...")
+
+#---- set variables ----
+tmin = rf[0].stats.sac.b
+npts = rf[0].stats.sac.npts
+dt   = rf[0].stats.sac.delta
+time = np.linspace( 0, npts-1, npts ) * dt + tmin
+
+min_baz = 50
+max_baz = 75
+scale   = 20
+
+scale_factor = 5
+
+input("Press Enter to continue...")
+
+fig=plt.figure()
+ax = fig.add_subplot(111)
+
+for i, tr in enumerate(rf):
+    baz = tr.stats.sac.baz
+    offset = baz
+    plt.plot(time, tr.data*scale_factor+offset, color='black', linewidth=0.8)
+    plt.xlim([0,30])
+    plt.ylim([320,335])
+    plt.xlabel('time, s')
+    plt.ylabel('back azimuth')
+    plt.grid(b=True, which='major', axis='x', linewidth=0.5)
+    plt.minorticks_on()
+    plt.fill_between(time, tr.data*scale_factor + offset, baz, where=(tr.data*scale_factor + offset)>baz, color = 'r')
+    plt.fill_between(time, tr.data*scale_factor + offset, baz, where=(tr.data*scale_factor + offset)<baz, color = 'b')
+    plt.title('Event_2011_09_16_19_26_40')
+    
+#---- rename outfile ----
+plt.savefig('Event_2011_09_16_19_26_40.png')
+
+plt.show()
