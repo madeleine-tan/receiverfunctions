@@ -3,8 +3,6 @@ from matplotlib import gridspec
 from obspy import read, Stream
 import numpy as np
 
-#TODO: extend stack to ~70s
-
 #sta = ['C40A','D41A','E40A']
 
        # 'E41A','E42A','E43A','E44A','E45A','F43A','F44A','F45A',
@@ -12,21 +10,9 @@ import numpy as np
        #   'I47A','I48A','I49A','J45A','J46A','J47A','J48A','J49A','K46A','K47A','K48A',
        #   'K49A','K50A','L46A','L48A','L49A']
 
-#dirs = ([ name for name in os.listdir('.') if os.path.isdir(os.path.join('.', name)) ])
-
-dir = 'all'
+dir = ''
 
 rf = read("./TA.I47A.*.recf.sac")
-
-def read_process_data(rfpath):
-    stadata = trrr.stats
-    idx = np.argsort(stadata.baz)
-    stadata.stla = stadata.stla[idx]
-    stadata.stlo = stadata.stlo[idx]
-    return stadata
-
-for trrr in rf:
-    print(trrr.stats)
 
 n  = len(rf)
 print('n=', n)
