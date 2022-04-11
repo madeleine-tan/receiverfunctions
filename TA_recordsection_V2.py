@@ -1,18 +1,5 @@
-#!/Users/madeleinetan/opt/anaconda3/bin/python
-
-# from obspy import read, Stream
-# import glob
-#
-# files = glob.glob('./TA.I47A.*.recf.sac')
-#
-# st = Stream()
-# for file in files:
-#     st += read(file)
-#
-# for tr in st:
-#     print(tr.stats)
-#
-# #tr.stats.sac.baz
+#CODE GENERATES FOUR PLOTS: RECEIVER FUNCTIONS ORDERED BY BAZ, RF STACK 1, RF STACK 2, 
+#BAZ SCATTER PLOT
 
 import matplotlib.pyplot as plt
 from matplotlib import gridspec
