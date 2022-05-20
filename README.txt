@@ -1,6 +1,6 @@
 Codes for receiver function analysis, 2022
   Madeleine Tan
-  Univ. Michigan, Dept. of Earth and Environmental Sciences
+  Univ. Michigan
   mmtan@umich.edu
   
  get_data_feb2022.py
@@ -10,6 +10,7 @@ Codes for receiver function analysis, 2022
  - reads in receiver functions by station
  - generate 3 subplots: record section by back azimuth, scatter plot of back azimuths, stack of record section
  
+ CURRENTLY BEING DEBUGGED:
  rf_QC.py
  - reads in receiver functions by station
  - prompts user to select three bad traces from the selected station's record station
